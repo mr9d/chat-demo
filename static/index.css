@@ -135,3 +135,18 @@
   line-height: 2;
   margin: 0;
 }
+
+@media (max-width: 1024px) {
+  .page {
+    width: 80%;
+  }
+}
+
+@media (max-width: 425px) {
+  .page {
+    width: 90%;
+  }
+  .send-message-form {
+    padding: 10px 20px;
+  }
+}
