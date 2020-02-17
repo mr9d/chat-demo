@@ -1,0 +1,121 @@
+.page {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-width: 200px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+.header-title {
+  margin: 0;
+}
+
+.main {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.name-form-popup {
+  background: rgba(255, 255, 255, .9);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-form-popup-visible {
+  display: flex;
+}
+
+.name-form-popup label {
+  display: block;
+  font-size: 2em;
+  margin: 0.4em 0;
+}
+
+.name-form-popup input {
+  display: block;
+  font-size: 2em;
+  margin: 0.4em 0;
+  padding: 0.2em 0;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.name-form-popup button {
+  display: block;
+  font-size: 2em;
+  margin: 0.4em 0;
+  padding: 0.2em 0;
+  width: 100%;
+  background: 0;
+  border: 1px solid grey;
+}
+
+.send-message-form {
+  background: lightgray;
+  border-radius: 1em;
+  padding: 1em 2em;
+  margin: 1em 0;
+}
+
+.message {
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  padding: 1em 2em;
+  margin: 1em 0;
+}
+
+.message-my {
+  border: none;
+  background: lightgray;
+}
+
+.message-title {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 0 0.5em;
+}
+
+.message-area {
+  width: 100%;
+  height: 4.5em;
+  box-sizing: border-box;
+  margin: 0.2em 0;
+}
+
+.message-submit {
+  display: block;
+  font-size: 1.2em;
+  padding: 0.2em 0;
+  width: 100%;
+  background: white;
+  border: 1px solid grey;
+}
+
+.footer {
+  border-top: 1px solid black;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 1em 0;
+}
+
+.footer p {
+  line-height: 2;
+  margin: 0;
+}
