@@ -27,7 +27,7 @@
     mainElement.insertBefore(messageElement, messageForm.nextSibling);
   };
 
-  const updateMessanges = () => {
+  const updateMessages = () => {
     const url = '/msg' + (lastUpdateTime ? '?since=' + lastUpdateTime : '');
     fetch(url)
       .then(response => response.json())
@@ -37,12 +37,21 @@
           lastUpdateTime = messages[messages.length - 1].date;
           messages.forEach(showMessage);
         }
-        setTimeout(updateMessanges, UPDATE_INTERVAL);
+        setTimeout(updateMessages, UPDATE_INTERVAL);
       });
   };
 
-  const initMessageTitleName = () => {
+  const updateMessageTitleName = () => {
     messageTitleNameElement.innerHTML = name;
+  };
+
+  const messageTitleNameClickHandler = () => {
+    showNameForm();
+  };
+
+  const initMessageTitleName = () => {
+    updateMessageTitleName();
+    messageTitleNameElement.addEventListener('click', messageTitleNameClickHandler);
   };
 
   const messageFormSubmitHandler = (evt) => {
@@ -78,7 +87,7 @@
     evt.preventDefault();
     localStorage.setItem('name', nameInput.value);
     name = nameInput.value;
-    initMessageTitleName();
+    updateMessageTitleName();
     hideNameForm();
   };
 
@@ -93,7 +102,7 @@
     initNameForm();
     initMessageForm();
     initMessageTitleName();
-    updateMessanges();
+    updateMessages();
   };
 
   init();

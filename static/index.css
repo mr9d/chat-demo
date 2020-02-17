@@ -43,7 +43,9 @@
 }
 
 .name-form {
-  padding: 1em 1em;
+  background: white;
+  padding: 1em;
+  margin: 1em;
 }
 
 .name-form-popup label {
@@ -77,6 +79,15 @@
   border-radius: 1em;
   padding: 1em 2em;
   margin: 1em 0;
+}
+
+.message-title-name {
+  text-decoration: underline dotted black;
+  cursor: default;
+}
+
+.message-title-name:hover {
+  text-decoration: none;
 }
 
 .message {
