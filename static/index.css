@@ -42,6 +42,10 @@
   display: flex;
 }
 
+.name-form {
+  padding: 1em 1em;
+}
+
 .name-form-popup label {
   display: block;
   font-size: 2em;
