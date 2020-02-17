@@ -113,6 +113,8 @@
   height: 4.5em;
   box-sizing: border-box;
   margin: 0.2em 0;
+  outline: none;
+  resize: vertical;
 }
 
 .message-submit {
@@ -122,6 +124,13 @@
   width: 100%;
   background: white;
   border: 1px solid grey;
+  outline: none;
+}
+
+.message-submit_off {
+  background: darkgray;
+  color: grey;
+  border: none;
 }
 
 .footer {
@@ -134,4 +143,19 @@
 .footer p {
   line-height: 2;
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    width: 80%;
+  }
+}
+
+@media (max-width: 425px) {
+  .page {
+    width: 90%;
+  }
+  .send-message-form {
+    padding: 10px 20px;
+  }
 }
