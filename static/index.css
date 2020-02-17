@@ -28,7 +28,7 @@
 
 .name-form-popup {
   background: rgba(255, 255, 255, .9);
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -55,6 +55,7 @@
   padding: 0.2em 0;
   border: none;
   border-bottom: 1px solid grey;
+  width: 100%;
 }
 
 .name-form-popup button {
