@@ -66,6 +66,7 @@
       }
     }).then(response => {
       messageInput.value = '';
+      messageForm.classList.remove('message-submit_off');
       messageForm.removeAttribute('disabled');
     });
   };
