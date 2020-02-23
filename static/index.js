@@ -2,16 +2,20 @@
   const UPDATE_INTERVAL = 3000;
 
   const messageTemplate = document.querySelector('#message-template').content;
-  const mainElement = document.querySelector('.main');
+  const messagesElement = document.querySelector('.messages');
 
-  const nameFormPopupElement = document.querySelector('.name-form-popup');
-  const nameForm = nameFormPopupElement.querySelector('form');
+  const namePopup = document.querySelector('.name-popup');
+  const infoPopup = document.querySelector('.info-popup');
+
+  const nameForm = namePopup.querySelector('form');
   const nameInput = nameForm.querySelector('input');
+  const infoPopupButton = infoPopup.querySelector('button');
 
-  const messageForm = document.querySelector('.send-message-form');
-  const messageInput = messageForm.querySelector('.message-area');
+  const messageForm = document.querySelector('.message-form');
+  const messageInput = messageForm.querySelector('input');
 
-  const messageTitleNameElement = document.querySelector('.message-title-name');
+  const userButton = document.querySelector('.user-button');
+  const infoButton = document.querySelector('.info-button');
 
   let name = localStorage.getItem('name');
 
@@ -24,7 +28,7 @@
     if(message.name === name) {
       messageElement.querySelector('.message').classList.add('message-my');
     }
-    mainElement.insertBefore(messageElement, messageForm.nextSibling);
+    messagesElement.prepend(messageElement);
   };
 
   const updateMessages = () => {
@@ -39,19 +43,6 @@
         }
         setTimeout(updateMessages, UPDATE_INTERVAL);
       });
-  };
-
-  const updateMessageTitleName = () => {
-    messageTitleNameElement.innerHTML = name;
-  };
-
-  const messageTitleNameClickHandler = () => {
-    showNameForm();
-  };
-
-  const initMessageTitleName = () => {
-    updateMessageTitleName();
-    messageTitleNameElement.addEventListener('click', messageTitleNameClickHandler);
   };
 
   const messageFormSubmitHandler = (evt) => {
@@ -74,34 +65,61 @@
     messageForm.addEventListener('submit', messageFormSubmitHandler);
   }
 
-  const showNameForm = () => {
+  const showNamePopup = () => {
     nameInput.value = name;
-    nameFormPopupElement.classList.add('name-form-popup-visible');
+    namePopup.classList.add('popup-visible');
   };
 
-  const hideNameForm = () => {
-    nameFormPopupElement.classList.remove('name-form-popup-visible');
+  const hideNamePopup = () => {
+    namePopup.classList.remove('popup-visible');
+  };
+
+  const showInfoPopup = () => {
+    infoPopup.classList.add('popup-visible');
+  };
+
+  const hideInfoPopup = () => {
+    infoPopup.classList.remove('popup-visible');
   };
 
   const nameFormSubmitHandler = (evt) => {
     evt.preventDefault();
     localStorage.setItem('name', nameInput.value);
     name = nameInput.value;
-    updateMessageTitleName();
-    hideNameForm();
+    hideNamePopup();
   };
 
-  const initNameForm = () => {
+  const initNamePopup = () => {
     if (!name) {
-      showNameForm();
+      showNamePopup();
     }
     nameForm.addEventListener('submit', nameFormSubmitHandler);
   };
 
+  const initInfoPopup = () => {
+    infoPopupButton.addEventListener('click', hideInfoPopup);
+  };
+
+  userButtonClickHandler = evt => {
+    evt.preventDefault();
+    showNamePopup();
+  };
+
+  infoButtonClickHandler = evt => {
+    evt.preventDefault();
+    showInfoPopup();
+  };
+
+  const initControl = () => {
+    userButton.addEventListener('click', userButtonClickHandler);
+    infoButton.addEventListener('click', infoButtonClickHandler);
+  };
+
   const init = () => {
-    initNameForm();
+    initNamePopup();
+    initInfoPopup();
     initMessageForm();
-    initMessageTitleName();
+    initControl();
     updateMessages();
   };
 

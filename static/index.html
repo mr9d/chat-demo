@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Болталка</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="index.css">
   <script src="index.js" defer></script>
@@ -13,34 +14,50 @@
 
 <body>
   <div class="page">
+
     <header class="header">
-      <h1 class="header-title">Болталка</h1>
+      <h1>Болталка</h1>
+      <nav class="control">
+        <button class="info-button" type="button"></button>
+        <button class="user-button" type="button"></button>
+      </nav>
     </header>
+
     <main class="main">
-      <div class="name-form-popup">
-        <form action="." class="name-form">
-          <label for="name">Как вас зовут?</label>
-          <input type="text" name="name" id="name" required placeholder="Иван Иванов">
-          <button type="submit">ОК</button>
-        </form>
-      </div>
-      <form action="/msg" class="send-message-form" method="POST">
-        <h2 class="message-title">Введите ваше сообщение, <span class="message-title-name"></span>:</h2>
-        <textarea name="message" class="message-area" required minlength="2"></textarea>
-        <button type="submit" class="message-submit">Отправить</button>
-      </form>
+      <div class="messages"></div>
     </main>
-    <footer class="footer">
-      <p>&copy; 2K20, Александр Козлов</p>
-      <p>Исходный код: <a href="https://github.com/mr9d/chat-demo">https://github.com/mr9d/chat-demo</a></p>
-    </footer>
+
+    <form action="/msg" class="message-form" method="POST">
+      <input type="text" name="message" placeholder="Введите сообщение" required minlength="2">
+      <button type="submit" class="message-submit"></button>
+    </form>
+
+    <div class="popup name-popup">
+      <form action="." class="popup-content name-form">
+        <label for="name">Имя</label>
+        <input type="text" name="name" id="name" required placeholder="Иван Иванов">
+        <button type="submit">Ок</button>
+      </form>
+    </div>
+
+    <div class="popup info-popup">
+      <div class=popup-content>
+        <p>Демонстрационное приложение онлайн-чат. Используемые технологии: HTML/CSS/Node.js/Express</p>
+        <p>Разработка проекта: Александр Козлов</p>
+        <p>Исходный код: <a href="https://github.com/mr9d/chat-demo">https://github.com/mr9d/chat-demo</a></p>
+        <button type="button">Ок</button>
+      </div>
+    </div>
+
   </div>
+
   <template id="message-template" style="display: none;">
     <section class="message">
       <h2 class="message-title"></h2>
       <article class="message-text"></article>
     </section>
   </template>
+
 </body>
 
 </html>
