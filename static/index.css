@@ -1,7 +1,8 @@
 .page {
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
-  min-height: 12em;
+  height: var(--ih, 100vh);
+  min-height: 13em;
   display: flex;
   flex-direction: column;
   position: relative;

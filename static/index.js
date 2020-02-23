@@ -1,6 +1,8 @@
 (function () {
   const UPDATE_INTERVAL = 3000;
 
+  const pageElement = document.querySelector('.page');
+
   const messageTemplate = document.querySelector('#message-template').content;
   const messagesElement = document.querySelector('.messages');
 
@@ -20,6 +22,16 @@
   let name = localStorage.getItem('name');
 
   let lastUpdateTime = null;
+
+  const setPageInnerHeight = () => {
+    const ih = window.innerHeight;
+    pageElement.style.setProperty('--ih', `${ih}px`);
+  }
+
+  const initPageElementHeight = () => {
+    setPageInnerHeight();
+    window.addEventListener('resize', setPageInnerHeight);
+  };
 
   const showMessage = (message) => {
     messageElement = messageTemplate.cloneNode(true);
@@ -116,6 +128,7 @@
   };
 
   const init = () => {
+    initPageElementHeight();
     initNamePopup();
     initInfoPopup();
     initMessageForm();
