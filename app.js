@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import messenger from './src/messenger.js';
+import getGoose from './src/goose.js';
 
 const port = process.env.PORT || 3000;
 
@@ -19,6 +20,12 @@ app.get('/msg', async (req, res) => {
   } else {
     res.json(messenger.getLastMessages(10));
   }
+});
+
+app.get('/goose', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.json(getGoose());
 });
 
 app.listen(port);
