@@ -23,7 +23,7 @@ app.get('/msg', async (req, res) => {
 });
 
 app.get('/goose', async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.json(getGoose());
 });
