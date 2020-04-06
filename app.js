@@ -8,19 +8,19 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.static(path.join(path.resolve(), 'static')));
 app.use(express.json());
-
-app.post('/msg', async (req, res) => {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+app.post('/msg', async (req, res) => {
   messenger.addMessage(req.body.name, req.body.message);
   res.json('TBD');
 });
 
 app.get('/msg', async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
   if(req.query.since) {
     res.json(messenger.getLastMessagesSince(req.query.since));
   } else {
@@ -29,8 +29,6 @@ app.get('/msg', async (req, res) => {
 });
 
 app.get('/goose', async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.json(getGoose());
 });
 
