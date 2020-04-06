@@ -10,11 +10,15 @@ app.use(express.static(path.join(path.resolve(), 'static')));
 app.use(express.json());
 
 app.post('/msg', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   messenger.addMessage(req.body.name, req.body.message);
   res.json('TBD');
 });
 
 app.get('/msg', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   if(req.query.since) {
     res.json(messenger.getLastMessagesSince(req.query.since));
   } else {
